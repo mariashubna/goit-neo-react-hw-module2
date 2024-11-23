@@ -1,6 +1,6 @@
-import css from "./Descriptions.module.css";
+import css from "./Description.module.css";
 
-const Descriptions = () => {
+const Description = () => {
   return (
     <>
       <h1 className={css.title}>Sip Happens Café</h1>
@@ -12,4 +12,4 @@ const Descriptions = () => {
   );
 };
 
-export default Descriptions;
+export default Description;

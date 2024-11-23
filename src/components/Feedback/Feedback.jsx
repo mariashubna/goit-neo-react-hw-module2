@@ -1,12 +1,7 @@
 import css from "./Feedback.module.css";
 
-const Feedback = ({ scores, totalFeedback }) => {
+const Feedback = ({ scores, totalFeedback, percent }) => {
   let scoreKey = Object.keys(scores);
-  let percent = Math.round((scores.good / totalFeedback) * 100);
-
-  if (totalFeedback === 0) {
-    return <p className={css.text}>No feedback yet</p>;
-  }
 
   return (
     <ul className={css.list}>

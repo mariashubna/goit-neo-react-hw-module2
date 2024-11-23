@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import Descriptions from "./components/Descriptions/Descriptions";
+import Description from "./components/Description/Description";
 import Options from "./components/Options/Options";
 import Feedback from "./components/Feedback/Feedback";
+import Notification from "./components/Notification/Notification";
 
 const scores = {
   good: 0,
@@ -29,20 +30,30 @@ function App() {
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
 
+  const percent = Math.round((feedback.good / totalFeedback) * 100);
+
   const resetFeedback = () => {
     setFeedback(scores);
   };
 
   return (
     <>
-      <Descriptions />
+      <Description />
       <Options
         options={Object.keys(scores)}
         updateFeedback={updateFeedback}
         totalFeedback={totalFeedback}
         handleReset={resetFeedback}
       />
-      <Feedback scores={feedback} totalFeedback={totalFeedback} />
+      {totalFeedback === 0 ? (
+        <Notification />
+      ) : (
+        <Feedback
+          scores={feedback}
+          totalFeedback={totalFeedback}
+          percent={percent}
+        />
+      )}
     </>
   );
 }
